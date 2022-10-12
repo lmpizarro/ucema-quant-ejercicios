@@ -107,6 +107,7 @@ class Client(FIXEngine):
 def main():
     logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
     client = Client()
+    client.start()
     logging.info("All done... shutting down")
 
 
