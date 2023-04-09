@@ -1,5 +1,7 @@
 import copy
 from collections import defaultdict
+from simple_trading_bot.lib.market_data_feeds import (RofexProxy, YfinanceMDFeed)
+from simple_trading_bot.lib.instrument_expert import InstrumentExpert
 
 
 class IRExpert:
@@ -8,7 +10,9 @@ class IRExpert:
     """
     DAYS_IN_A_YEAR = 365
 
-    def __init__(self, instrument_expert, rofex_proxy, yfinance_md_feed):
+    def __init__(self, instrument_expert:InstrumentExpert,
+                 rofex_proxy:RofexProxy,
+                 yfinance_md_feed:YfinanceMDFeed):
         self._futures_by_underlier_ticker = instrument_expert.tradeable_rofex_instruments_by_underlier_ticker()
         self._maturiries_by_ticker = instrument_expert.maturities_of_tradeable_tickers()
         self._rofex_proxy = rofex_proxy

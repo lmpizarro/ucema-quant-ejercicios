@@ -1,4 +1,5 @@
 from tabulate import tabulate
+from simple_trading_bot.lib.ir_expert import IRExpert
 
 class IRPrinter:
     """
@@ -6,7 +7,7 @@ class IRPrinter:
     """
     EMPTY_ROW_STR = '*' * 12 + ' -> ' + '*' * 10
 
-    def __init__(self, ir_expert):
+    def __init__(self, ir_expert:IRExpert):
         self._ir_expert = ir_expert
 
     def print_rates(self):

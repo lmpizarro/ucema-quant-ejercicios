@@ -1,11 +1,11 @@
-
+from simple_trading_bot.lib.market_data_feeds import (RofexProxy, YfinanceMDFeed)
 
 class DataUpdateWatchman:
     """
     Class used to keep track on data updates
     """
 
-    def __init__(self, rofex_proxy, yfinance_md_feed):
+    def __init__(self, rofex_proxy: RofexProxy, yfinance_md_feed:YfinanceMDFeed):
         self._rofex_proxy = rofex_proxy
         self._yfinance_md_feed = yfinance_md_feed
         self._last_proc_timestamp = 0.

@@ -3,7 +3,11 @@ from collections import namedtuple
 import pyRofex
 
 import simple_trading_bot.conf.transaction_costs as tc
-
+from simple_trading_bot.lib.instrument_expert import InstrumentExpert
+from simple_trading_bot.lib.ir_expert import IRExpert
+from simple_trading_bot.lib.data_update_watchman import DataUpdateWatchman
+from simple_trading_bot.lib.market_data_feeds import (RofexProxy,
+                                                      YfinanceMDFeed)
 
 class Trader:
     """
@@ -11,11 +15,11 @@ class Trader:
     """
     def __init__(
             self,
-            instrument_expert,
-            ir_expert,
-            rofex_proxy,
-            yfinance_md_feed,
-            data_update_watchman):
+            instrument_expert:InstrumentExpert,
+            ir_expert:IRExpert,
+            rofex_proxy:RofexProxy,
+            yfinance_md_feed:YfinanceMDFeed,
+            data_update_watchman:DataUpdateWatchman):
         self._futures_by_ticker = instrument_expert.rofex_instruments_by_ticker()
         self._maturity_tags = instrument_expert.tradeable_maturity_tags()
         self._ir_expert = ir_expert

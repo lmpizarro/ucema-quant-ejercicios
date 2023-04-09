@@ -9,6 +9,7 @@ import pyRofex
 import yfinance
 
 import simple_trading_bot.lib.pyrofex_wrapper as prw
+from simple_trading_bot.lib.instrument_expert import InstrumentExpert
 
 
 FLOAT_LIMIT = 1e-4
@@ -45,7 +46,7 @@ class YfinanceMDFeed(MarketDataFeed):
     Data will be refreshed on a configurable regular basis.
     """
 
-    def __init__(self, instrument_expert, update_frequency):
+    def __init__(self, instrument_expert:InstrumentExpert, update_frequency: float):
         super().__init__()
         self._tickers = instrument_expert.tradeable_yfinance_tickers()
         self._inverse_ticker_map = instrument_expert.inverse_yfinance_tickers_map()
@@ -101,7 +102,7 @@ class RofexProxy(MarketDataFeed):
         pyRofex.MarketDataEntry.BIDS,
         pyRofex.MarketDataEntry.OFFERS]
 
-    def __init__(self, instrument_expert, subscribe_to_order_report=False):
+    def __init__(self, instrument_expert:InstrumentExpert, subscribe_to_order_report=False):
         super().__init__()
         self._futures_ticker = instrument_expert.tradeable_rofex_tickers()
         self._pyrofex_wrapper = prw.PyRofexWrapper()
@@ -193,6 +194,6 @@ class RofexProxy(MarketDataFeed):
         print(f'Rofex Error Message Received: {message}')
         self.stop()
 
-    def _exception_handler(self, e):
+    def _exception_handler(self, message):
         print(f'Rofex Exception Occurred: {message}')
         self.stop()
