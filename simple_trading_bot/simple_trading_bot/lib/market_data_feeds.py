@@ -193,6 +193,6 @@ class RofexProxy(MarketDataFeed):
         print(f'Rofex Error Message Received: {message}')
         self.stop()
 
-    def _exception_handler(self, e):
+    def _exception_handler(self, message):
         print(f'Rofex Exception Occurred: {message}')
         self.stop()
