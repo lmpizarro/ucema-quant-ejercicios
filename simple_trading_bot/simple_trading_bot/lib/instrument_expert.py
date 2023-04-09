@@ -109,7 +109,8 @@ class InstrumentExpert:
         """
         Logic to parse rofex instruments
         """
-        futures_regexps = {ticker: re.compile(f'^{ticker}[A-Z][a-z][a-z]2.$') for ticker in self._tickers}
+        aux_reg = "/[A-Z]{3}[0-9]{2}$"
+        futures_regexps = {ticker: re.compile(f'^{ticker}{aux_reg}') for ticker in self._tickers}
         rest_instruments = prw.PyRofexWrapper().get_detailed_instruments()
         for instrument in rest_instruments['instruments']:
             for ticker, regexp in futures_regexps.items():
@@ -124,6 +125,6 @@ class InstrumentExpert:
 
     @staticmethod
     def _yfinance_ticker(ticker):
-        if ticker == 'DO':
+        if ticker == 'DLR':
             return 'ARS=X'
         return ticker + '.BA'
