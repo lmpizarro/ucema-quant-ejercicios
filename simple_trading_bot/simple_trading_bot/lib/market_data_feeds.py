@@ -4,6 +4,7 @@ import threading
 import time
 from collections import defaultdict, namedtuple
 from pprint import pprint
+import traceback
 
 import pyRofex
 import yfinance
