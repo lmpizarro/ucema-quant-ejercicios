@@ -1,5 +1,3 @@
-from collections import namedtuple
-
 import pyRofex
 
 import simple_trading_bot.conf.transaction_costs as tc

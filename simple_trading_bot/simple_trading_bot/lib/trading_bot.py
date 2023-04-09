@@ -1,4 +1,3 @@
-import time
 import traceback
 
 from simple_trading_bot.lib.ir_expert import IRExpert

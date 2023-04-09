@@ -2,7 +2,7 @@ import copy
 import sys
 import threading
 import time
-from collections import defaultdict, namedtuple
+from collections import  namedtuple
 from pprint import pprint
 import traceback
 
