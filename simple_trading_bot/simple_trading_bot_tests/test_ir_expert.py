@@ -10,7 +10,7 @@ from simple_trading_bot.lib.instrument_expert import Future
 
 
 class TestIRExpert(unittest.TestCase):
-    TODAY = "2021-01-01"
+    TODAY = "2023-04-01"
 
     def setUp(self):
         self.ggal = 'GGAL'
