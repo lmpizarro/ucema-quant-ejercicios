@@ -30,7 +30,7 @@ class TestIRExpert(unittest.TestCase):
         self._rofex_proxy_mock.asks.return_value = {
             self.ggal_ticker: mdf.OrderbookLevel(120, 10), self.dlr_ticker: mdf.OrderbookLevel(130, 10)}
         self._instrument_expert_mock = MagicMock()
-        self._maturity_date = dt.datetime(2021, 6, 30, 0, 0, 0, 0)
+        self._maturity_date = dt.datetime(2023, 5, 30, 0, 0, 0, 0)
         self._instrument_expert_mock.tradeable_rofex_instruments_by_underlier_ticker.return_value = {
             self.ggal: [Future(self.ggal_ticker, self._maturity_date, self.ggal, 100.)],
             self.dlr: [Future(self.dlr_ticker, self._maturity_date, self.dlr, 1000.)]}
